@@ -1,15 +1,9 @@
 def PrimeList(N):
-    # 用于存储小于 N 的质数
-    primes = []
-    # 遍历从 2 到 N - 1 的所有数，判断是否为质数
-    for num in range(2, N):
-        is_prime = True
-        # 只需要检查到 num 的平方根即可，减少计算量
-        for i in range(2, int(num ** 0.5) + 1):
-            if num % i == 0:
-                is_prime = False
-                break
-        if is_prime:
-            primes.append(str(num))
-    # 将质数列表用空格连接成字符串并返回
-    return " ".join(primes)
+    is_prime = [True] * N
+    is_prime[0] = is_prime[1] = False
+    for i in range(2, int(N**0.5) + 1):
+        if is_prime[i]:
+            for j in range(i*i, N, i):
+                is_prime[j] = False
+    primes = [str(i) for i in range(N) if is_prime[i]]
+    return ' '.join(primes)
