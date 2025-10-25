@@ -1,9 +1,18 @@
-def PrimeList(N):
-    is_prime = [True] * N
-    is_prime[0] = is_prime[1] = False
-    for i in range(2, int(N**0.5) + 1):
-        if is_prime[i]:
-            for j in range(i*i, N, i):
-                is_prime[j] = False
-    primes = [str(i) for i in range(N) if is_prime[i]]
-    return ' '.join(primes)
+def isOdd(value):
+    
+    # 判断类型是否为整数
+    if isinstance(value, bool):
+        return False
+    if isinstance(value, int):
+        if value % 2 != 0:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+# 主程序部分，用于测试isOdd函数
+if __name__ == "__main__":
+    N = input()
+    num = isOdd(N)
+    print(num)
